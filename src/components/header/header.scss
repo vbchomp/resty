@@ -1,0 +1,11 @@
+$backgroundColor: cadetblue;
+$primary-color: #efefef;
+
+header {
+  background: darken($backgroundColor, 10);
+  border-bottom: 1px solid #eee;
+  color: $primary-color;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}

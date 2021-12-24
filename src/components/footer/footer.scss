@@ -1,0 +1,10 @@
+$backgroundColor: cadetblue;
+$primary-color: #efefef;
+
+footer {
+  background: darken($backgroundColor, 20);
+  color: $primary-color;
+  border-top: 1px solid #eee;
+  padding: 1em 3em;
+  margin: 0;
+}
