@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/resty/static/css/main.de6801d2.css",
+    "main.js": "/resty/static/js/main.c372cb13.js",
+    "index.html": "/resty/index.html",
+    "main.de6801d2.css.map": "/resty/static/css/main.de6801d2.css.map",
+    "main.c372cb13.js.map": "/resty/static/js/main.c372cb13.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.de6801d2.css",
+    "static/js/main.c372cb13.js"
+  ]
+}
