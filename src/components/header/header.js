@@ -1,9 +1,11 @@
 import './header.scss';
 
-function Header(props) {
+function Header( {title} ) {
   return (
     <header>
-      <h1>RESTy</h1>
+      <h1 title="Header" className="header"> 
+        {title} 
+      </h1>
     </header>
   );
 }
