@@ -1,6 +1,69 @@
 # resty
 
 // TODO: Testing for the proof of life. Check out react testing library snapshot.
+// TODO: Lab 29  
+// TODO: Lab 28  
+
+## RESTy Phase 4
+
+In phase 4, we will be tracking every API call and storing it in history
+
+The following user stories detail the major functionality for this phase of the project.
+
+- As a user, I want to see a list of my previous API calls, so that I can see the results again, quickly
+- Application Flow:
+
+  - User enters an API URL
+  - Chooses a REST Method
+  - Clicks the “Go” button
+  - Application fetches data from the URL given, with the method specified
+  - Application stores the API request and returned data into state
+    - Updates the list of previous API calls
+  - Application Displays the response headers and results separately
+    - Both headers and results should be “pretty printed” JSON
+
+Refactor state management within the App component to use the ```useReducer``` hook.
+
+Replace any component state managements to use derived state from ```useReducer``` with a reducer function and intitial state.
+
+Suggested approach
+
+- ```<App />``` Use a reducer to store and manage all application state: loading, results, history
+  - Add to history array in state after every api call
+method, url, results (json)
+- ```<History />``` Iterates the history array in state and shows the previous API calls
+  - When one is clicked on, show the results in the results component
+  - Note: the results component renders whatever is in state.
+
+## RESTy Phase 3
+
+Connect RESTy with APIs, running live requests
+
+In phase 3, we will be connecting RESTy to live APIs, fetching and displaying remote data. Our primary focus will be to service GET requests
+
+The following user stories detail the major functionality for this phase of the project.
+
+- As a user, I want to enter the URL to an API and issue a GET request so that I can retrieve it’s data
+- As a user, I want to see the results returned from an API request in my browser in a readable format
+- Application Flow:
+
+  - User enters an API URL
+  - Chooses a REST Method
+  - Clicks the “Go” button
+  - Application fetches data from the URL given, with the method specified
+  - Displays the response headers and results separately
+  - Both headers and results should be “pretty printed” JSON
+
+Refactor application methods to allow for browser side HTTP requests to be sent.
+Your implementation should allow the user to set a ```url```, ```method```, and request ```body```.
+Make sure all relavent request and response data is displayed to the User.
+Suggested approach:
+
+- ```<Form />``` component, ```onSubmit()``` sends the user’s entries to the ```<App />``` via method sent in through props
+- ```<App />``` does a check on the request data from the form and updates the request variable in state with the ```url```, ```method```, and potentially the ```body```
+- ```<App />``` has an effect hook that’s looking for changes to the request variable in state, and in response, runs the API request with the new request options from state
+- ```<App />``` updates state with the results of the API Request
+- ```<Results />``` sees the new API data as a prop and renders the JSON
 
 ## RESTy Phase 2
 
@@ -12,7 +75,7 @@ The following user stories detail the major functionality for this phase of the 
 
 - As a user, I want to enter the REST Method and URL to an API
 - As a user, I want to see a summary of my request as well as results returned from an API request in my browser in a readable format
-Application Flow:
+- Application Flow:
 
   - User enters an API URL
   - Chooses a REST Method
