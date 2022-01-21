@@ -1,8 +1,6 @@
 # resty
 
-// TODO: Component didmount and write a console.log or something in the component.
-// Testing for the proof of life. Check out react testing library snapshot.
-// Get solution code for 26 and then starter code for 27.
+// TODO: Testing for the proof of life. Check out react testing library snapshot.
 
 ## RESTy Phase 2
 
@@ -79,6 +77,7 @@ Heather Bisgaard, Software Engineer
 ## Collaborators
 
 - Charlie Fadness
+- Kris Esvelt, TA
 
 ## Setup
 
@@ -103,8 +102,6 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 - [How to deploy React App to GitHub Pages](https://dev.to/yuribenjamin/how-to-deploy-react-app-in-github-pages-2a1f)
 
 ## Links
-
-- [Netlify](https://hbiz-resty.netlify.app/)
 
 - [Github](https://github.com/vbchomp/resty)
 
