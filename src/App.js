@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 import './app.scss';
 import Header from './components/header/header.js';
@@ -6,52 +7,46 @@ import Footer from './components/footer/footer.js';
 import Form from './components/form/form.js';
 import Results from './components/results/results.js';
 
-// DONE: change class to function
 function App() {
-  
-  // DONE: create state for data, requestParams
-  const [ data, setData ] = useState(null);
-  const [ requestParams, setRequestParams ] = useState({});
-  // TODO: create boolean loading state
-  const [ loading, setLoading] = useState(false);
-  // DONE: get rid of constructor
+  const [data, setData] = useState(null);
+  const [requestParams, setRequestParams] = useState({});
+  const [loading, setLoading] = useState(false);
 
-  // DONE: toggle before and after loading status
-  // DONE: turn into function
-  const callApi = async (requestParams) => {
+  const setParams = (requestParams) => {
     // toggling before loading status
-    setLoading(true);
-    // mock output
-    await setTimeout(() => {
-      const data = {
-        headers: { ContentType: 'text/xml' },
-        count: 2,
-        results: [
-          {name: 'fake thing 1', url: 'http://fakethings.com/1'},
-          {name: 'fake thing 2', url: 'http://fakethings.com/2'},
-        ]
-      };
-      // DONE: update data
-      // DONE: update requestParams
-      setData(data);
-      // toggling after loading status
-      setLoading(false);
-    }, 1000)
+    console.log('whatever');
     setRequestParams(requestParams);
-  }
+  };
 
-  // DONE: change JSX
+  useEffect(() => {
+    setLoading(true);
+    const callApi = async () => {
+      // mock output
+      // const data = requestParams.textArea;
+      console.log('request', requestParams);
+      const response = await axios({
+        method: requestParams.method,
+        url: requestParams.url,
+        data: requestParams.textArea,
+      });
+      console.log('requestParams.url', requestParams.url);
+            // console.log('response.data', response.data);
+      setData(response.data);
+      setLoading(false);
+    };
+    // this fixes the useEffect first run callAPI because url is not defined
+    if (requestParams.url) {
+      callApi();
+    }
+  }, [requestParams]);
+
   return (
     <>
-      <Header title={"RESTy"} />
+      <Header title={'RESTy'} />
       {console.log('requestParams', requestParams)}
-      <div>
-        Request Method: {requestParams.method}
-      </div>
-      <div>
-        URL: {requestParams.url}
-      </div>
-      <Form handleApiCall={callApi} />
+      <div>Request Method: {requestParams.method}</div>
+      <div>URL: {requestParams.url}</div>
+      <Form handleApiCall={setParams} />
       <Results data={data} loading={loading} />
       <Footer />
     </>
