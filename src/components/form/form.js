@@ -25,7 +25,7 @@ function Form(props) {
       setTextArea(e.target.value);
     }
   }  
-
+console.log('method', method === 'POST');
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -50,7 +50,7 @@ function Form(props) {
           </span>
           <span onClick={ () => setMethod('DELETE') } className= { method === 'DELETE' ? 'currentSelection' : 'selection' } >DELETE</span>
         </label>
-        <textarea onChange={handleChange} name='textArea' />
+        { method === 'POST' || method === 'PUT' ? <textarea onChange={handleChange} name='textArea' /> : null }
       </form>
     </>
   );
